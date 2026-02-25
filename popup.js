@@ -4,13 +4,13 @@ const DAY_NAMES = [
 ];
 
 const DEFAULT_THEMES = {
-  0: { from: '#ffecd2', to: '#fcb69f' },
-  1: { from: '#667eea', to: '#764ba2' },
-  2: { from: '#f093fb', to: '#f5576c' },
-  3: { from: '#4facfe', to: '#00f2fe' },
-  4: { from: '#43e97b', to: '#38f9d7' },
-  5: { from: '#fa709a', to: '#fee140' },
-  6: { from: '#a18cd1', to: '#fbc2eb' },
+  '0': { from: '#ffecd2', to: '#fcb69f' },
+  '1': { from: '#667eea', to: '#764ba2' },
+  '2': { from: '#f093fb', to: '#f5576c' },
+  '3': { from: '#4facfe', to: '#00f2fe' },
+  '4': { from: '#43e97b', to: '#38f9d7' },
+  '5': { from: '#fa709a', to: '#fee140' },
+  '6': { from: '#a18cd1', to: '#fbc2eb' },
 };
 
 let themes = {};
@@ -33,7 +33,8 @@ function buildUI() {
   const today = new Date().getDay();
 
   for (let i = 0; i < 7; i++) {
-    const theme = themes[i] || DEFAULT_THEMES[i];
+    const key = String(i);
+    const theme = themes[key] || DEFAULT_THEMES[key];
 
     const row = document.createElement('div');
     row.className = 'day-row' + (i === today ? ' today' : '');
@@ -56,7 +57,7 @@ function buildUI() {
     const fromInput = document.createElement('input');
     fromInput.type = 'color';
     fromInput.value = theme.from;
-    fromInput.dataset.day = i;
+    fromInput.dataset.day = key;
     fromInput.dataset.end = 'from';
 
     const toLabel = document.createElement('label');
@@ -64,12 +65,12 @@ function buildUI() {
     const toInput = document.createElement('input');
     toInput.type = 'color';
     toInput.value = theme.to;
-    toInput.dataset.day = i;
+    toInput.dataset.day = key;
     toInput.dataset.end = 'to';
 
     const preview = document.createElement('div');
     preview.className = 'preview';
-    preview.id = `preview-${i}`;
+    preview.id = `preview-${key}`;
     preview.style.background = `linear-gradient(135deg, ${theme.from}, ${theme.to})`;
 
     function onChange(e) {
