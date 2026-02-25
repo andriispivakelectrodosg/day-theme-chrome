@@ -1,11 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Day Theme — New Tab",
-  "version": "0.2.0",
-  "description": "Changes your New Tab background gradient based on the day of the week",
-  "permissions": ["storage"],
+  "version": "0.3.0",
+  "description": "Changes your New Tab background gradient and browser toolbar colors based on the day of the week",
+  "permissions": ["storage", "alarms"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html",

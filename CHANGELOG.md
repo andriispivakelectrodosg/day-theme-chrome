@@ -2,6 +2,19 @@
 
 All notable changes to the **Day Theme — New Tab** Chrome extension.
 
+## [0.3.0] - 2026-02-25
+
+### Added
+- Browser toolbar and tab bar theming via `chrome.theme` API. The frame and toolbar colors now match the day's gradient (from → frame, to → toolbar).
+- Background service worker (`background.js`) that applies the browser theme on install, startup, and day changes.
+- Hourly alarm to detect day-of-week changes and update the browser theme automatically.
+- Instant theme update when colors are changed in the popup (via `chrome.storage.onChanged`).
+- `alarms` permission for day-change detection.
+
+### Changed
+- Version bumped to 0.3.0.
+- Description updated to mention toolbar theming.
+
 ## [0.2.0] - 2026-02-25
 
 ### Fixed
